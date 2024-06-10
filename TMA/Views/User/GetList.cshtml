@@ -1,0 +1,59 @@
+﻿@model List<User>
+
+@{
+    ViewData["Title"] = "User List";
+}
+
+<h1 class="gradient-text">User</h1>
+
+<div class="d-flex justify-content-between">
+    <button onclick="location.href='@Url.Action("Create", "User")'" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Create</button>
+    <form id="form" asp-action="GetById" method="get" class="d-flex">
+        <input type="number" name="id" class="form-control mr-1 d-inline-block" placeholder="Search User by Id" aria-describedby="search-button"/>
+        <button type="submit" class="btn btn-primary d-flex" id="search-button"><i class="bi bi-search mr-1"></i> Search</button>
+    </form>
+</div>
+<table class="table table-hover">
+    <thead>
+        <tr class="gradient-table-head">
+            <th>
+                Id
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Surame
+            </th>
+            <th>
+                E-Mail
+            </th>
+            <th>
+                Update | Delete
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr class="gradient-table-body">
+            <td>
+                @item.Id
+            </td>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.Surname
+            </td>
+            <td>
+                @item.Email
+            </td>
+            <td>
+                <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-primary"><i class="bi bi-pencil-square"></i> Update</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

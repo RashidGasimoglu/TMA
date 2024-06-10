@@ -1,0 +1,43 @@
+﻿@model Assignment
+
+@{ ViewData["Title"] = "Update Task"; }
+
+<h1 class="gradient-text">Update Task</h1>
+
+<div class="row">
+    <div class="col-md-5">
+        <form asp-action="UpdateAssignment">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">User</label>
+                <select asp-for="UserId" class="form-control" asp-items="ViewBag.User"> </select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <select asp-for="Status" class="form-control" asp-items="ViewBag.StatusList"></select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DueDate" class="control-label"></label>
+                <input asp-for="DueDate" class="form-control" />
+                <span asp-validation-for="DueDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success mr-1"><i class="bi bi-pencil-square"></i> Save</button>
+                <a asp-action="GetList" class="btn btn-primary"><i class="bi bi-arrow-return-left"></i> Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>

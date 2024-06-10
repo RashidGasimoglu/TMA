@@ -1,0 +1,32 @@
+﻿@model User
+
+@{ ViewData["Title"] = "Delete User"; }
+
+<h1 class="gradient-text">Delete User</h1>
+
+<h6 class="mb-3">This User will get deleted permanently</h6>
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="DeleteUser">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" readonly/>
+            </div>
+            <div class="form-group">
+                <label asp-for="Surname" class="control-label"></label>
+                <input asp-for="Surname" class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" readonly />
+            </div>
+            <h6 class="mb-4">Do you still want to proceed?</h6>
+            <div class="form-group">
+                <input type="hidden" asp-for="Id" />
+                <button type="submit" class="btn btn-danger mr-1"><i class="bi bi-trash"></i> Delete</button>
+                <a asp-action="GetList" class="btn btn-primary"><i class="bi bi-arrow-return-left"></i> Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
